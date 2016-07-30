@@ -1,0 +1,5 @@
+[run]
+include = aws_assignment/*
+omit = *migrations*, *tests*
+plugins =
+    django_coverage_plugin
