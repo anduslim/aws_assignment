@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block title %}User: {{ object.username }}{% endblock %}
 
 {% block content %}
@@ -9,24 +8,34 @@
   <div class="row">
     <div class="col-sm-12">
 
-      <h2>{{ object.username }}</h2>
-      {% if object.name %}
-        <p>{{ object.name }}</p>
-      {% endif %}
+      <p></p>
     </div>
   </div>
 
+    <div class="row">
+
+      <div class="col-md-4 ">
+          <img src="{{ STATIC_URL }}images/{{object.slug}}.jpg"/>
+
+      </div>
+      <div class=="col-md-8">
+        <h1>{{ object.name }}</h1>
+          <p>Born: {{ object.dob }}</p>
+          <p>{{ object.description }}</p>
+          <h2>Known For</h2>
+
+          <ul>
+              {% for show in object.movie.all %}
+              <li><a href="{% url 'movies:detail' show.slug %}">{{ show.name }}</a></li>
+              {% endfor %}
+          </ul>
+      </div>
+
+    </div>
+
 {% if object == request.user %}
 <!-- Action buttons -->
-<div class="row">
 
-  <div class="col-sm-12 ">
-    <a class="btn btn-primary" href="{% url 'users:update' %}">My Info</a>
-    <a class="btn btn-primary" href="{% url 'account_email' %}">E-Mail</a>
-    <!-- Your Stuff: Custom user template urls -->
-  </div>
-
-</div>
 <!-- End Action buttons -->
 {% endif %}
 
