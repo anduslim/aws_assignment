@@ -45,6 +45,8 @@ THIRD_PARTY_APPS = (
 LOCAL_APPS = (
     # custom users app
     'aws_assignment.users.apps.UsersConfig',
+    'aws_assignment.movies',
+    'aws_assignment.actors'
     # Your stuff: custom apps go here
 )
 
